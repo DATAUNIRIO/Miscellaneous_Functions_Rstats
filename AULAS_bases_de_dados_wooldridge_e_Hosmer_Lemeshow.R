@@ -178,3 +178,50 @@ variaveis<-c("preço","preco_avaliado",
               "log_terreno",
               "log_area")
 
+#--------------------------------------------------------------------------
+#         DOBSON
+#--------------------------------------------------------------------------
+library(dobson)
+
+#--------------------------------------------------------------------------
+#         Hosmer, Lemeshow and Sturdivant, "Applied Logistic Regression"
+#--------------------------------------------------------------------------
+
+Pacote do R com as Bases do livro "Applied Logistic Regression"
+aplore3: Datasets from Hosmer, Lemeshow and Sturdivant, "Applied Logistic Regression" (3rd Ed., 2013)
+https://cran.r-project.org/web/packages/aplore3/index.html
+install.packages("aplore3")
+Pacote do R com as Bases do livro Introductory Econometrics: A Modern Approach, 6e by Jeffrey M. Wooldridge.
+https://cran.r-project.org/web/packages/wooldridge/index.html
+install.packages("wooldridge")
+library(wooldridge)
+#https://cran.r-project.org/web/packages/wooldridge/vignettes/Introductory-Econometrics-Examples.html
+data("wage1")
+?wage1
+summary(wage1)
+#aplore3: Datasets from Hosmer, Lemeshow and Sturdivant, "Applied Logistic Regression" (3rd Ed., 2013)
+library(aplore3)
+example(burn1000)                                 
+burn13m                                 
+burneval1                               
+burneval2                               
+chdage
+glowdatasets
+glow500                        
+glowbonemed                    
+glowmiscomp                    
+glowmiswmissing                           
+glowrand                                
+icu
+lowbwt
+myopia
+example(nhanes)
+example(polypharm)
+example(scale_example)
+http://archive.ics.uci.edu/ml/datasets/Automobile
+http://archive.ics.uci.edu/ml/datasets/Car+Evaluation
+http://archive.ics.uci.edu/ml/datasets/University
+http://archive.ics.uci.edu/ml/datasets/Audit+Data#
+http://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set
+https://www.youtube.com/watch?v=C4N3_XJJ-jU&t=67s
+https://statquest.org/video-index/

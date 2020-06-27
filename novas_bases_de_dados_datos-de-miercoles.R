@@ -51,3 +51,27 @@ attr(personagens_livro, "variable.labels")<-c("nome do personagem","qual casa el
 attributes(personagens_livro)
 
 attr(personagens_livro, "variable.labels")
+
+
+#save(mudancas_aliancas,personagens_livro,tempo_de_tela,file="Game of Thrones.RData")
+
+# install.packages(readr)
+
+fifa_copa_mundial <- readr::read_delim("https://raw.githubusercontent.com/cienciadedatos/datos-de-miercoles/master/datos/2019/2019-04-10/partidos.txt",delim = "\t")
+
+variaveis<-c("ano","anfitriao","estadio","cidade","game_order",
+  "data","time_1","time_2","gols_time_1","gols_time_2")
+
+colnames(fifa_copa_mundial)<-variaveis
+
+dicionario<-c("ano da copa do mundo","anfitrião da Copa do Mundo",
+  "Estádio onde o jogo foi disputado","Cidade onde o jogo foi jogado",
+  "Ordem na qual o jogo foi disputado no torneio",
+  "Data em que o jogo foi jogado",
+  "time 1 na partida","time 2 na partida",
+  "Resultado final do time 1 na partida",
+  "Resultado final do time 2 na partida")
+
+attr(fifa_copa_mundial, "variable.labels")<-dicionario
+
+write.csv2(fifa_copa_mundial,file = "fifa_copa_mundial.csv",fileEncoding = "latin1" ,row.names=FALSE)

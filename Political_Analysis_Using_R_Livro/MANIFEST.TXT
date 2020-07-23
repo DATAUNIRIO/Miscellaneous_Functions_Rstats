@@ -1,0 +1,33 @@
+alpl2013.dta (application/x-stata) 210991 bytes.
+BPchap7.dta (application/x-stata) 61284 bytes.
+chapter01.R (text/plain; charset=US-ASCII) 1293 bytes.
+chapter02.R (text/plain; charset=US-ASCII) 5591 bytes.
+chapter03.R (text/plain; charset=US-ASCII) 5766 bytes.
+chapter04.R (text/plain; charset=US-ASCII) 1938 bytes.
+chapter05.R (text/plain; charset=US-ASCII) 2327 bytes.
+chapter06.R (text/plain; charset=US-ASCII) 4064 bytes.
+chapter07.R (text/plain; charset=US-ASCII) 7228 bytes.
+chapter08.R (text/plain; charset=US-ASCII) 6433 bytes.
+chapter09.R (text/plain; charset=US-ASCII) 6166 bytes.
+chapter10.R (text/plain; charset=US-ASCII) 3960 bytes.
+chapter11.R (text/plain; charset=US-ASCII) 12959 bytes.
+comprehensiveJapanEnergy.dta (application/x-stata) 3896 bytes.
+constructionData.dta (application/x-stata) 19761 bytes.
+drugCoverage.csv (text/plain; charset=US-ASCII) 4064 bytes.
+erratum.pdf (application/pdf) 74002 bytes.
+hanmerKalkanANES.dta (application/x-stata) 21394 bytes.
+hmnrghts.dta (application/x-stata) 11050 bytes.
+hmnrghts.txt (text/plain) 7602 bytes.
+levant.dta (application/x-stata) 69533 bytes.
+LL.csv (text/plain; charset=US-ASCII) 37689 bytes.
+moneyDem.dta (application/x-stata) 11944 bytes.
+owsiakJOP2013.dta (application/x-stata) 526517 bytes.
+PESenergy.csv (text/plain; charset=US-ASCII) 9623 bytes.
+pts1994.csv (text/plain; charset=US-ASCII) 4729 bytes.
+pts1995.csv (text/plain; charset=US-ASCII) 4725 bytes.
+sen113kh.ord (text/plain; charset=US-ASCII) 72975 bytes.
+SinghEJPR.dta (application/x-stata) 2681442 bytes.
+SinghJTP.dta (application/x-stata) 945076 bytes.
+stdSingh.dta (application/x-stata) 9276322 bytes.
+UN.csv (text/plain; charset=US-ASCII) 30653 bytes.
+war1800.dta (application/x-stata) 20258 bytes.

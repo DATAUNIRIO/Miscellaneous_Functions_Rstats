@@ -97,18 +97,18 @@ distribuicao_normal("#522d80","#F66733", "Open Sans") +
     theme_steven_web() + post_bg() +
   # ^ all from stevemisc
   labs(title = "A área sob uma curva com distribuição normal",
-       subtitle = "As caudas se estendem até o infinito. A curva normal aproxima-se do eixo horizontal assintoticamente conforme nos afastamos da média, mas 95% de todos os valores possíveis \n estão dentro de cerca de 1,96 desvios de distância da média.",
+       subtitle = "As caudas se estendem até o infinito. A curva normal aproxima-se do eixo horizontal assintoticamente conforme nos afastamos da média,  \n mas 95% de todos os valores possíveis estão dentro de cerca de 1,96 desvios de distância da média.",
        y = "Densidade",
        x = "")
 
 
-print("Propriedades da distribuição Normal padrão",warning=FALSE)
-print("  ",warning=FALSE)
-print("A área total sob a curva normal é igual a 1.",warning=FALSE)
-print("A área acumulada para z = 0 é 0,500.",warning=FALSE)
-print("A maior parte da área sob a curva normal com parâmetros μ e σ se encontram entre μ−3σ e μ+3σ.",warning=FALSE)
-print("A curva é simétrica em torno do eixo vertical que passa na média μ.",warning=FALSE)
-print("A curva normal aproxima-se do eixo horizontal assintoticamente conforme nos afastamos da média em qualquer direção.",warning=FALSE)
+# print("Propriedades da distribuição Normal padrão",warning=FALSE)
+# print("  ",warning=FALSE)
+# print("A área total sob a curva normal é igual a 1.",warning=FALSE)
+# print("A área acumulada para z = 0 é 0,500.",warning=FALSE)
+# print("A maior parte da área sob a curva normal com parâmetros μ e σ se encontram entre μ−3σ e μ+3σ.",warning=FALSE)
+# print("A curva é simétrica em torno do eixo vertical que passa na média μ.",warning=FALSE)
+# print("A curva normal aproxima-se do eixo horizontal assintoticamente conforme nos afastamos da média em qualquer direção.",warning=FALSE)
 
 
 

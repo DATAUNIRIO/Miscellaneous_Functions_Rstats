@@ -1,0 +1,453 @@
+snippet meu_inicio
+	##================================================================================================
+	##                                                                                              
+	##    Nome:                                           
+	##                                                    
+	##    site:                                                                                                                                                 ##
+	##    Objetivo:
+	##    prof. Steven Dutt-Ross                          
+	##    UNIRIO           
+	##================================================================================================
+
+snippet meu_inicio_sessao
+	#----------------------------------------------------------------------------------------
+	#
+	#----------------------------------------------------------------------------------------
+
+snippet meu_yaml
+	---
+	title: "Hello R Markdown"
+	author: "[Prof. Steven Dutt-Ross](https://dataunirio.github.io/)"
+	categories: ["R"]
+	tags: ["R Markdown", "plot", "regression"]
+	output:
+		html_document:
+			includes:
+				in_header: Google_Analytics.html
+		theme: cerulean
+		highlight: tango
+		toc: true
+		toc_float: true
+		code_folding: hide
+		summary: 'Práticas pedagógicas no período de pós-pandemia.
+		---
+		```{css, echo=FALSE}
+		@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Chilanka&display=swap');
+		body {
+			color: #198c7b;
+			background-color: #f7f5de;
+	  	font-family: 'Chilanka', cursive;
+			font-size: 22px;
+		}
+		p::first-letter {
+			font-size: 200%;
+			color: #116155;
+			line-height: 70px;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color: #116155;
+			font-family: 'Great Vibes', cursive;
+		}
+		.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+			background-color: #116155;
+			font-family: 'Great Vibes', cursive;
+		}
+		```
+snippet meu_missing
+	---
+	sum(is.na(DADOS))
+	---
+
+snippet meu_download_de_site
+	library(XML)
+	library(RCurl)
+	url<-"https://www.r-bloggers.com/deploying-a-minimal-api-using-plumber-on-digitalocean/"
+	html.doc <- getURL(url)  
+	doc = htmlParse(html.doc, asText=TRUE)
+	capture.output(doc, file="deploying-a-minimal-api-using-plumber-on-digitalocean.html")
+
+snippet meu_delete_linha_com_NA
+	data <- rbind(c(1,2,3), c(1, NA, 4), c(4,6,7), c(NA, NA, NA), c(4, 8, NA)) # sample data
+	data
+	# Delete de NA
+	fullrecords <-  data[complete.cases(data),] 
+	droprecords <-  data[!complete.cases(data),] 
+	delete_empty_rows_records <-data[rowSums(is.na(data)) != ncol(data),]
+	library(tidyr)
+	banco_de_dados<-banco_de_dados %>% drop_na(comentario)
+
+snippet meu_combinacao_de_duas_variaveis
+	# Criando a base
+	mydata<-NULL
+	mydata\$gender <- c("M", "F", "M")
+	mydata\$country <- c("USA", "USA", "USA")
+	# METODO 1
+	transform(mydata, newvar=paste(gender, country))
+	# METODO 2
+	paste(mydata$gender, mydata$country,sep="_")
+
+snippet meu_recode_new_variable
+	# Recoding variables
+	# create 2 age categories
+	mydata$agecat <- ifelse(mydata$age > 70, c("older"), c("younger"))
+	# another example: create 3 age categories
+	attach(mydata)
+	mydata$agecat[age > 75] <- "Elder"
+	mydata$agecat[age > 45 & age <= 75] <- "Middle Aged"
+	mydata$agecat[age <= 45] <- "Young"
+	detach(mydata)
+
+
+snippet meu_case_when
+	# MELHOR QUE O IF_ELSE
+	x <- 1:50
+	library(dplyr)
+	case_when(
+		x %% 35 == 0 ~ "esse seria o primeir if",
+		x %% 5 == 0 ~ " esse seria o segundo if",
+		x %% 7 == 0 ~ "esse seria o terceiro if",
+		TRUE ~ as.character(x)
+	)
+	# case_when is particularly useful inside mutate when you want to
+	# create a new variable that relies on a complex combination of existing
+	# variables
+	starwars %>%
+		select(name:mass, gender, species) %>%
+		mutate(
+			type = case_when(
+			height > 200 | mass > 200 ~ "large",
+			species == "Droid"        ~ "robot",
+			TRUE                      ~ "other"))
+
+
+snippet meu_nova_variavel_com_base_na_busca_de_palavras
+	# https://stackoverflow.com/questions/19747384/create-new-column-in-dataframe-based-on-partial-string-matching-other-column
+	#random data; it wasn't easy to copy-paste yours  
+	DF <- data.frame(GL = sample(10), GLDESC = paste(sample(letters, 10),c("gas", "payroll12", "GaSer", "asdf", "qweaa", "PayROll-12", "asdfg", "GAS--2", "fghfgh", "qweee"), sample(letters, 10), sep = " "))
+	#DF$KIND <- ifelse(grepl("gas", DF$GLDESC, ignore.case = T), "Materials", 
+	#           ifelse(grepl("payroll", DF$GLDESC, ignore.case = T), "Payroll", "Other"))
+	#DF
+	
+	
+snippet meu_for
+	SEQ  <- seq(1,100000)
+	pb   <- txtProgressBar(1, 100000, style=3)
+	for(i in SEQ){
+		Sys.sleep(0.00002)
+		setTxtProgressBar(pb, i)
+	}
+	
+	N <- 10
+	for(i in 1:N){
+	Sys.sleep(0.5)
+	cat("\r", i, "of", N)
+	}
+
+
+snippet meu_xaringan
+	---
+	title: "Uma análise do twitter da UNIRIO"
+	subtitle: "Uma avaliação informal da estratégia de comunicação da UNIRIO"  
+	author: "Steven Dutt Ross"
+	categories: ["R","UNIRIO", "twitter", "text analysis"]
+	tags: ["UNIRIO", "twitter", "text analysis"]
+	summary: 'Práticas pedagógicas no período de pós-pandemia.
+	output:
+		xaringan::moon_reader:
+			chakra: libs/remark-latest.min.js
+			lib_dir: libs
+			css: xaringan-themer.css
+			nature:
+				highlightStyle: github
+				highlightLines: true
+				ratio: "16:9"
+			countIncrementalSlides: false
+	---
+
+	```{r setup, include=FALSE, eval=TRUE}
+	options(htmltools.dir.version = FALSE)
+	library(xaringanthemer)
+	library(xaringanExtra)
+	library(knitr)
+	#https://pkg.garrickadenbuie.com/xaringanExtra/
+	solarized_light(header_color="#b5244a")
+	knitr::opts_chunk$set(
+		fig.width = 10, fig.height = 6, fig.retina = 2,
+		warning = FALSE, message = FALSE)
+	```
+	```{r meta, echo=FALSE}
+	library(metathis)
+	meta() %>%
+	  meta_general(
+	  description = "Uma análise do twitter da UNIRIO.",
+	  generator = "xaringan and remark.js"
+	  ) %>%
+	meta_description("Uma análise do twitter da UNIRIO.Uma avaliação informal da estratégia de comunicação da UNIRIO.") %>% 
+	meta_social(
+	  title = "Uma análise do twitter da UNIRIO",
+		url = "https://dataunirio.github.io/",
+	  og_type = "website",
+		og_author = "DATAUNIRIO",
+		twitter_card_type = "summary_large_image",
+		twitter_creator = "@RJengajado"
+	) %>% 
+	print()
+	```
+
+
+snippet meu_minha_opcoes
+	#How to disable scientific notation
+	options(scipen=999)
+	# Voltar con a notação cientifica
+	options(scipen = 0)
+	options(shiny.reactlog=TRUE)
+	options(stringsAsFactors = FALSE)
+	options(digits = 15)
+	options(encoding="latin1")
+	options(encoding="UTF-8")
+	# options(OutDec= ",")   # Bad ideia
+	names(options())
+	# reset (all) initial options
+	options(op)     
+
+
+snippet meu_minha_pizza
+	contagem = table(CARROS#TipodeMarcha)
+	nomes = levels(CARROS#TipodeMarcha)
+	porcent = round(contagem/sum(contagem)*100,2)
+	rotulo=paste(nomes," (",porcent,"%",")",sep="")
+	
+	# Construindo a pizza
+	pie(table(CARROS#TipodeMarcha),labels=rotulo, main="meu titulo")
+	pie(table(CARROS#TipodeMarcha),labels=rotulo, main="meu titulo",col=c("red","blue"))
+	require(plotrix)
+	pie3D(table(CARROS#TipodeMarcha),explode=0.1,labels=rotulo, main="meu titulo")
+
+
+snippet meu_minha_barras
+	library(dplyr)
+	percentual <- CARROS %>% 
+		pull(TipodeMarcha) %>%
+		table() %>%
+		prop.table()*100
+	percentual <- round(percentual,digits = 1)
+	rotulo <- paste0(percentual,"%")
+	#GRÁFICO DE BARRA
+	bp<- CARROS %>% 
+	  pull(TipodeMarcha) %>%
+		table() %>%
+		barplot(ylab="Frequência",col=c("red","blue"),main="Gráfico 1")
+	text(bp, 0, rotulo,cex=1,pos=3,col = "white")
+
+	
+snippet meu_banco_CARROS
+	data(mtcars)
+	CARROS<-mtcars
+	remove(mtcars)
+	colnames(CARROS) <- c("Kmporlitro","Cilindros","Preco","HP","Amperagem_circ_eletrico",
+	"Peso","RPM","Tipodecombustivel","TipodeMarcha","NumdeMarchas","NumdeValvulas")
+	CARROS\$TipodeMarcha<-as.factor(CARROS\$TipodeMarcha)
+	CARROS\$Tipodecombustivel<-as.factor(CARROS\$Tipodecombustivel)
+	levels(CARROS\$Tipodecombustivel) <- c('Gasolina','Álcool')
+	levels(CARROS\$TipodeMarcha) <- c('Automático', 'Manual')
+	nomes<-c("Km por litro","Número de Cilindros","Preço",
+	"HP = Horse Power (potência do motor)","Amperagem_circ_eletrico = Amperagem média (o principal indicador da bateria)","Peso (em toneladas) do Carro",
+	"RPM = Rotações Por Minuto","Tipo de combustível (0 = Gasolina, 1 = Álcool)","Tipo de Câmbio (0 = Automático, 1 = Manual)",
+	"Número de Marchas","Número de Válvulas")
+	attr(CARROS, "variable.labels") <- nomes
+	attributes(CARROS)
+	names(CARROS)
+	summary(CARROS)
+
+
+snippet meu_subconjunto
+	#SUB CONJUNTO DE VARIÁVEIS
+	teste <- subset(teste, subset=year==2010)
+	DEPUTADO <- subset(Data, subset=V10=='DEPUTADO FEDERAL')
+	BELFORD <- subset(Dataset2, subset=DESCRICAO_UE=="BELFORD ROXO")
+	QUISSAMA <- subset(Dataset2, subset=DESCRICAO_UE=="QUISSAMÃ")
+	AMSsurvey <- subset(AMSsurvey, subset=sex == 'Female')
+	AMSsurvey <- subset(AMSsurvey, subset=count >50)
+	AMSsurvey <- subset(AMSsurvey, subset=sex == 'Female' & count >50)
+	library(dplyr)
+	financials %>% filter((Symbol == "ACN" | Symbol == "APTV") & (Sector == "Consumer Discretionary" | Sector == "Industrials"))
+
+	
+	
+snippet meu_minha_dist_normal	
+	plot(seq(-3.2,3.2,length=50),dnorm(seq(-3,3,length=50),0,1),type="l",xlab="",ylab="",ylim=c(0,0.5))
+	
+	# 68% dos dados
+	segments(x0 = c(-1,1),y0 = c(-1,-1),x1 = c(-1,1),y1=c(0.25,0.25))
+	text(x=0,y=0.15,labels = expression("68% dos dados até 1" * sigma),cex=0.9)
+
+	# 95% dos dados
+	segments(x0 = c(-2,2),y0 = c(-1,-1),x1 = c(-2,2),y1=c(0.4,0.4))
+	text(x=0,y=0.3,labels = expression("95% dos dados até 2" ~ sigma))
+	arrows(x0=c(-1.5,1.5),y0=c(0.3,0.3),x1=c(-2,2),y1=c(0.3,0.3))
+
+	# 99,7% dos dados
+	segments(x0 = c(-3,3),y0 = c(-1,-1),x1 = c(-3,3),y1=c(1,1))
+	text(x=0,y=0.45,labels = expression("99.7% dos dados até 3" ~ sigma))
+	arrows(x0=c(-2,2),y0=c(0.45,0.45),x1=c(-3,3),y1=c(0.45,0.45))
+	
+	
+snippet meu_mapa_mundi	
+	# MAPA MUNDI
+	require(rworldmap)
+	data(countryExData)
+	head(countryExData)
+	sPDF <- joinCountryData2Map( countryExData, joinCode = "ISO3", nameJoinColumn = "ISO3V10")
+	mapCountryData( sPDF, nameColumnToPlot="BIODIVERSITY")
+
+	require(rgdal)
+	# Lendo mapas de municipios
+	RJ <- readOGR("RJ", "33MUE250GC_SIR")
+	# Criando um atributo genérico para os 92 municípios
+	RJ@data_cifrao_Y <- rnorm(92, 100, sd =10) 
+	# Forçando a barra para que o município do Rio tenha essa medida bem diferente dos demais municípios
+	RJ@data_cifrao_Y[68] <- 2000
+	
+	library(tmap)
+	tm_shape(RJ) + tm_fill("Y", style="jenks") +
+	tm_borders() + tm_layout(frame=F)
+	
+
+
+snippet meu_banco_eleicoes
+	# Carrega o pacote
+	require(electionsBR)
+	# Baixa os dados
+	dado2008 <- candidate_local(year = 2008)
+	dim(dado2008)
+	dado2008<-subset(dado2008,DESCRICAO_CARGO=="PREFEITO")
+	dim(dado2008)
+	head(dado2008)
+	table(dado2008#DESC_SIT_TOT_TURNO)
+	dado2008<-subset(dado2008,DESC_SIT_TOT_TURNO=="ELEITO")
+	dim(dado2008)
+	dado2008#SIGLA_PARTIDO<-factor(dado2008#SIGLA_PARTIDO)
+	
+snippet meu_minha_cor	
+	# Mostrando a Cor
+	require(RColorBrewer)
+	display.brewer.all()
+	# Guardando a cor
+	COR<-brewer.pal(8,"Greens")
+	
+	# Escolhendo a cor
+	tmaptools::palette_explorer()
+	
+	# Escolhendo mais cores
+	n <- 60
+	qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+	col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+	pie(rep(1,n), col=sample(col_vector, n))
+	# Escolhendo cor viridis
+	library(viridis)
+	viridis_pal(option = "D")(n)  # n = number of colors seeked
+	
+	
+snippet meu_shiny
+	#.libPaths("/home/steven/R/x86_64-pc-linux-gnu-library/3.4")
+	#library(shiny, lib.loc="/home/steven/R/x86_64-pc-linux-gnu-library/3.4")
+	#library(magrittr, lib.loc="/home/steven/R/x86_64-pc-linux-gnu-library/3.4")
+	#library(shinyWidgets, lib.loc="/home/steven/R/x86_64-pc-linux-gnu-library/3.4")
+	
+	library(shiny)
+	library(magrittr)
+	library(shinyWidgets)
+	ui <- fluidPage(theme = "estilo.css",
+	setBackgroundColor("#a7e5c2"),
+	titlePanel("Olá mundo"),
+	sidebarLayout(
+		sidebarPanel(
+			sliderInput("bins","Number of bins:",min = 1,max = 50,value = 30)),
+	mainPanel(plotOutput("distPlot"))
+		)
+	)
+	server <- function(input, output,session) {
+		output$distPlot <- renderPlot({
+		})
+	}
+	shinyApp(ui = ui, server = server)
+
+snippet meu_CSSchunk
+	```{css, echo=FALSE}
+	@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+	@import url('https://fonts.googleapis.com/css?family=Chilanka&display=swap');
+	body {
+		color: #198c7b;
+		background-color: #f7f5de;
+	  font-family: 'Chilanka', cursive;
+		font-size: 22px;
+	}
+	
+	p::first-letter {
+		font-size: 200%;
+		color: #116155;
+		line-height: 70px;
+	}
+	h1,h2,h3,h4,h5,h6 {
+		color: #116155;
+		font-family: 'Great Vibes', cursive;
+	}
+	.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+		background-color: #116155;
+		font-family: 'Great Vibes', cursive;
+	}
+	```
+
+snippet meu_projeto
+	localdoprojeto<-readClipboard()
+	setwd(localdoprojeto)
+	dir.create(paste0(localdoprojeto,'/codigo_r'))
+	dir.create(paste0(localdoprojeto,'/rmarkdown'))
+	dir.create(paste0(localdoprojeto,'/rmarkdown/css'))
+	dir.create(paste0(localdoprojeto,'/dados'))
+	dir.create(paste0(localdoprojeto,'/imagem'))
+	dir.create(paste0(localdoprojeto,'/www'))
+	
+	
+snippet meu_passo_a_passo	
+	grViz("digraph flowchart {
+		# node definitions with substituted label text
+		node [fontname = Helvetica, shape = rectangle, fillcolor = yellow]        
+		tab1 [label = 'Step 1: Propose a distribution for the response variable \n Choose a maximum entropy distribution given the constraints you understand']
+		tab2 [label = 'Step 2: Parameterize the mean \n The mean of the response distribution will vary linearly across the range of predictor values']
+		tab3 [label = 'Step 3: Set priors \n Simulate what the model knows before seeing the data.  Use domain knowledge as constraints.']
+		tab4 [label = 'Step 4: Define the model \n Create the model using the observed data, the likelihood function, and the priors']
+		tab5 [label = 'Step 5: Draw from the posterior \n Plot plausible lines using parameters visited by the Markov chains']
+		tab6 [label = 'Step 6: Push the parameters back through the model \n Simulate real data from plausible combinations of mean and sigma']
+		# edge definitions with the node IDs
+		tab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6;
+		}
+	")
+
+snippet meu_tidyverse
+	# The tidyverse is an opinionated collection of R packages designed for data science. 
+	library(tidyverse)
+	#tidylog provides feedback about dplyr and tidyr operations.
+	library(tidylog)
+	#tidyselect: Select from a Set of Strings
+	library(tidyselect)
+	# modelos
+	library(tidymodels)
+	library(tidypredict)
+	# para Textos
+	library(tidytext)
+	# tidyquery runs SQL queries on R data frames
+	library(tidyquery)
+	# dbplyr is the database backend
+	library(dbplyr)
+
+snippet meu_save_no_excel
+	prox_palavra<-list(excelente,atendimento,comida)
+	writexl::write_xlsx(prox_palavra,path = "prox_palavra.xlsx")
+	
+snippet meu_crosstable
+	library(flexpivot)
+	library(magrittr)
+	pivot_addin(nobel_laureates)
+

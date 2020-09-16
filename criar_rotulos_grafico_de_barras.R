@@ -31,10 +31,14 @@ criar_rotulos <-function(base,variavel){
 }
 
 exemplo<-paste0('EXEMPLO DE FUNCIONAMENTO \n
+source("https://raw.githubusercontent.com/DATAUNIRIO/Miscellaneous_Functions_Rstats/master/criar_rotulos_grafico_de_barras.R",encoding = "UTF-8")  \n
+load(url("https://github.com/DATAUNIRIO/Base_de_dados/raw/master/CARROS.RData"))  \n
 barras <- barplot(table(CARROS$TipodeMarcha),col=c("red","blue"))   \n
 text(barras, 0, criar_rotulos(CARROS,"TipodeMarcha"),cex=1,pos=3,col = "white")'
 )
 message(exemplo)
+
+
 
 #--------------------------------------------------------
 # Teste de funcionamento

@@ -16,8 +16,8 @@
 #CARROS[,"TipodeMarcha"]
 #CARROS[["TipodeMarcha"]]
 
-load("C:/Users/Hp/Documents/GitHub/Base_de_dados/Titanic.RData")
-load("C:/Users/Hp/Documents/GitHub/Base_de_dados/CARROS.RData")
+#load("C:/Users/Hp/Documents/GitHub/Base_de_dados/Titanic.RData")
+#load("C:/Users/Hp/Documents/GitHub/Base_de_dados/CARROS.RData")
 
 
 library(dplyr)

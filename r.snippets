@@ -451,3 +451,9 @@ snippet meu_crosstable
 	library(magrittr)
 	pivot_addin(nobel_laureates)
 
+snippet meu_download_de_texto_de_site
+	source('/home/steven/github/SER_III_WebScraping/html2txt.R')
+	text = gettxt("https://steven.metodosquantitativos.com/")
+	cat(text)
+	text = html2txt("<html><body>html texts</body></html>")
+	text

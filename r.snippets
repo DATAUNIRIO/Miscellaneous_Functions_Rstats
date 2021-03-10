@@ -24,13 +24,20 @@ snippet meu_yaml
 		html_document:
 			includes:
 				in_header: Google_Analytics.html
-		theme: cerulean
-		highlight: tango
-		toc: true
-		toc_float: true
-		code_folding: hide
+			theme: cerulean
+			highlight: tango
+			toc: true
+			toc_float: true
+			code_folding: hide
 		summary: 'Práticas pedagógicas no período de pós-pandemia.
 		---
+		
+		```{r setup, include=FALSE}
+		knitr::opts_chunk$set(echo = TRUE,message = FALSE,
+			warning = FALSE,comment = NA)
+		options(digits = 2)
+		```
+
 		```{css, echo=FALSE}
 		@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 		@import url('https://fonts.googleapis.com/css?family=Chilanka&display=swap');
@@ -450,10 +457,16 @@ snippet meu_crosstable
 	library(flexpivot)
 	library(magrittr)
 	pivot_addin(nobel_laureates)
+	library(dplyr)
+	banco_de_dados %>% pull(variavel) %>% table()
+	banco_de_dados %>% select(variavel_1,variavel_2) %>% table()
 
-snippet meu_download_de_texto_de_site
-	source('/home/steven/github/SER_III_WebScraping/html2txt.R')
-	text = gettxt("https://steven.metodosquantitativos.com/")
-	cat(text)
-	text = html2txt("<html><body>html texts</body></html>")
-	text
+snippet meu_glue
+	library(glue)
+	name <- "Fred"
+	glue('My name is {name}.')
+	
+	name <- c("Fred","Carlos")
+	glue('Meu name eh {name[1]}.')
+	glue('Meuy name eh {name[2]}.')
+

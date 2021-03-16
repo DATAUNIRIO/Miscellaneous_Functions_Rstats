@@ -470,3 +470,32 @@ snippet meu_glue
 	glue('Meu name eh {name[1]}.')
 	glue('Meuy name eh {name[2]}.')
 
+snippet meu_variavel_qualitativa
+	speed_vector <- c("Fast", "Slow", "Slow", "Fast", "Ultra-fast")
+	factor_speed <- factor(speed_vector, ordered = TRUE, levels = c("Slow", "Fast", "Ultra-fast"))
+	factor_speed2 <- factor(speed_vector, , levels = c("Slow", "Fast", "Ultra-fast"))
+	factor_speed
+	factor_speed2
+	class(factor_speed)
+	class(factor_speed2)
+
+snippet meu_Renaming_levels_variavel_qualitativa
+	# A sample factor to work with.
+	x <- factor(c("alpha","beta","gamma","alpha","beta"))
+	x
+	levels(x)
+	# estrategia 1
+	levels(x)[levels(x)=="beta"] <- "two"
+	# estrategia 2
+	x <- gsub("beta", "two", x)
+	# estrategia 3
+	library(plyr)
+	revalue(x, c("beta"="two", "gamma"="three"))
+	# estrategia 4
+	library(plyr)
+	mapvalues(x, from = c("beta", "gamma"), to = c("two", "three"))
+	# estrategia 5
+	x<-ifelse(x=="beta","two",x)
+
+
+

@@ -138,13 +138,6 @@ snippet meu_nova_variavel_com_base_na_busca_de_palavras
 	
 	
 snippet meu_for
-	SEQ  <- seq(1,100000)
-	pb   <- txtProgressBar(1, 100000, style=3)
-	for(i in SEQ){
-		Sys.sleep(0.00002)
-		setTxtProgressBar(pb, i)
-	}
-	
 	N <- 10
 	for(i in 1:N){
 	Sys.sleep(0.5)
@@ -448,6 +441,8 @@ snippet meu_tidyverse
 	library(tidyquery)
 	# dbplyr is the database backend
 	library(dbplyr)
+	#tidyjson: Tidy Complex 'JSON' into tidy data frames.
+	library(tidyjson)
 
 snippet meu_save_no_excel
 	prox_palavra<-list(excelente,atendimento,comida)

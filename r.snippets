@@ -141,7 +141,13 @@ snippet meu_for
 	N <- 10
 	for(i in 1:N){
 	Sys.sleep(0.5)
-	cat("\r", i, "of", N)
+	cat("\n \r", i, "of", N)
+	}
+	library(progress)
+	pb <- progress_bar$new(total = 100)
+	for (i in 1:100) {
+	pb$tick()
+	Sys.sleep(1 / 100)
 	}
 
 
@@ -260,7 +266,6 @@ snippet meu_banco_CARROS
 	names(CARROS)
 	summary(CARROS)
 
-
 snippet meu_subconjunto
 	#SUB CONJUNTO DE VARIÁVEIS
 	teste <- subset(teste, subset=year==2010)
@@ -273,26 +278,6 @@ snippet meu_subconjunto
 	library(dplyr)
 	financials %>% filter((Symbol == "ACN" | Symbol == "APTV") & (Sector == "Consumer Discretionary" | Sector == "Industrials"))
 
-	
-	
-snippet meu_minha_dist_normal	
-	plot(seq(-3.2,3.2,length=50),dnorm(seq(-3,3,length=50),0,1),type="l",xlab="",ylab="",ylim=c(0,0.5))
-	
-	# 68% dos dados
-	segments(x0 = c(-1,1),y0 = c(-1,-1),x1 = c(-1,1),y1=c(0.25,0.25))
-	text(x=0,y=0.15,labels = expression("68% dos dados até 1" * sigma),cex=0.9)
-
-	# 95% dos dados
-	segments(x0 = c(-2,2),y0 = c(-1,-1),x1 = c(-2,2),y1=c(0.4,0.4))
-	text(x=0,y=0.3,labels = expression("95% dos dados até 2" ~ sigma))
-	arrows(x0=c(-1.5,1.5),y0=c(0.3,0.3),x1=c(-2,2),y1=c(0.3,0.3))
-
-	# 99,7% dos dados
-	segments(x0 = c(-3,3),y0 = c(-1,-1),x1 = c(-3,3),y1=c(1,1))
-	text(x=0,y=0.45,labels = expression("99.7% dos dados até 3" ~ sigma))
-	arrows(x0=c(-2,2),y0=c(0.45,0.45),x1=c(-3,3),y1=c(0.45,0.45))
-	
-	
 snippet meu_mapa_mundi	
 	# MAPA MUNDI
 	require(rworldmap)
@@ -530,6 +515,19 @@ snippet meu_ggplot_theme
 	)
 
 
+snippet meu_minha_funcao_remover_caracteres_especiais  
+	Encoding(banco$texto) <- "UTF-8"
+	banco$texto<-chartr("áéíóúÁÉÍÓÚýÝàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõÃÕñÑäëïöüÄËÏÖÜÿçÇ",
+										"aeiouaeiouyyaeiouaeiouaeiouaeiouaoaonnaeiouaeiouycc",
+										banco$texto)
+	remove_acentos <- function(x) iconv(x, to = "ASCII//TRANSLIT")
+	remove_acentos <- abjutils::rm_accent()
+	#remover emoji e emojicon
+	banco$texto<-emo::ji_replace_all(banco$texto," ")
+	#remover esclamacao interrogacao e ponto final
+	banco$texto<- gsub("\\!","", banco$texto)
+	banco$texto<- gsub("\\?","", banco$texto)
+	banco$texto<- gsub("\\.","", banco$texto)
 
 
 

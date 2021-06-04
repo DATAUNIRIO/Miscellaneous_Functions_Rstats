@@ -529,5 +529,16 @@ snippet meu_minha_funcao_remover_caracteres_especiais
 	banco$texto<- gsub("\\?","", banco$texto)
 	banco$texto<- gsub("\\.","", banco$texto)
 
+snippet meu_pipe
+	library(magrittr, include.only = "%>%")
 
+snippet meu_pacote
+	pacotes<-c("dplyr","ggplot2","tidyr")
+	sapply(pacotes,library,character.only=TRUE,logical.return=TRUE)
+
+snippet meu_purrrr
+	library(purrr)
+	soma_um <- function(x) {x + 1}
+	map(1:10, soma_um)
+	data.frame(map(1:10, soma_um))
 

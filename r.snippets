@@ -61,6 +61,34 @@ snippet meu_yaml
 			font-family: 'Great Vibes', cursive;
 		}
 		```
+		
+snippet meu_yaml2
+	---
+	title: "Hello R Markdown"
+	author: "[Prof. Steven Dutt-Ross](https://dataunirio.github.io/)"
+	categories: ["R"]
+	tags: ["R Markdown", "plot", "regression"]
+	output:
+		html_document:
+			theme:
+				 bootswatch: journal
+				 bg: "#301934"
+				 fg: "#DFFF00"
+				 primary: "#ED79F9"
+				 heading_font: 
+					 google: Sen
+				 base_font:
+					 google: Sen
+				 code_font:
+					 google: JetBrains Mono
+		toc: true
+		toc_float: true
+		code_folding: hide             
+	---
+
+	```{r setup, include=FALSE}
+	knitr::opts_chunk\$set(echo = TRUE,message = FALSE, warning = FALSE,comment = NA)
+
 snippet meu_missing
 	---
 	sum(is.na(DADOS))
@@ -129,6 +157,13 @@ snippet meu_case_when
 
 
 snippet meu_nova_variavel_com_base_na_busca_de_palavras
+	library(tidyverse)
+	sentences[1:5]
+	keywords <-c("children","birch","size","rice","chicken")
+	names(keywords)<-keywords
+	keywords %>%
+		map_dfc(~str_detect(sentences,.x)) %>%
+		add_column(sentences)
 	# https://stackoverflow.com/questions/19747384/create-new-column-in-dataframe-based-on-partial-string-matching-other-column
 	#random data; it wasn't easy to copy-paste yours  
 	DF <- data.frame(GL = sample(10), GLDESC = paste(sample(letters, 10),c("gas", "payroll12", "GaSer", "asdf", "qweaa", "PayROll-12", "asdfg", "GAS--2", "fghfgh", "qweee"), sample(letters, 10), sep = " "))
@@ -542,3 +577,16 @@ snippet meu_purrrr
 	map(1:10, soma_um)
 	data.frame(map(1:10, soma_um))
 
+snippet meu_download_pdf
+	#"https://inteligencia.insightnet.com.br/pdfs/93.pdf
+	dir.create("insight_inteligencia")
+	library(glue)
+	numeros<- 1:93
+	origem<-glue("https://inteligencia.insightnet.com.br/pdfs/{numeros}.pdf")
+	destino <-paste0(glue(getwd(),"/insight_inteligencia/{numeros}.pdf"))
+	#purrr::safely() is one option here. 
+	#If you wrap download.file() in safely(), it will skip over the errors and continue iterating over each of the urls. 
+	#In this case, you don't care about what is returned, so safely() just skips the files that aren't found. 
+	library(purrr)
+	safe_download <- safely(~ download.file(.x, .y, mode = "wb"))
+	walk2(origem, destino, safe_download)

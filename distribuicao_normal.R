@@ -19,7 +19,7 @@ distribuicao_normal <- function(curvecolor, fillcolor, fontfamily) {
       geom_segment(x=1, y=0, xend=1, yend=dnorm(1,0,1), color="white", linetype="dashed") +
       geom_segment(x=-1, y=0, xend=-1, yend=dnorm(1,0,1), color="white", linetype="dashed") +
       annotate(geom = "text", x = 0, y = 0.2,
-               label = "68%", size =4.5, color="white") +
+               label = "68,26%", size =4.5, color="white") +
       geom_segment(x=-0.15, y=.2, xend=-.99, yend=.2, color="white",
                    arrow = arrow(length = unit(0.15, "cm"))) +
       geom_segment(x=0.15, y=.2, xend=.99, yend=.2, color="white",
@@ -31,13 +31,13 @@ distribuicao_normal <- function(curvecolor, fillcolor, fontfamily) {
       geom_segment(x=0.15, y=.1, xend=1.64, yend=.1, color="white",
                    arrow = arrow(length = unit(0.15, "cm"))) +
       annotate(geom = "text", x = 0, y = 0.05,
-               label = "95%", size =4.5, color="white") +
+               label = "95,44%", size =4.5, color="white") +
       geom_segment(x=-0.15, y=.05, xend=-1.95, yend=.05, color="white",
                    arrow = arrow(length = unit(0.15, "cm"))) +
       geom_segment(x=0.15, y=.05, xend=1.95, yend=.05, color="white",
                    arrow = arrow(length = unit(0.15, "cm"))) +
       annotate(geom = "text", x = 0, y = 0.01,
-               label = "99%", size =4.5, color="white") +
+               label = "99,74%", size =4.5, color="white") +
       geom_segment(x=-0.15, y=.01, xend=-2.57, yend=.01, color="white",
                    arrow = arrow(length = unit(0.15, "cm"))) +
       geom_segment(x=0.15, y=.01, xend=2.57, yend=.01, color="white",
